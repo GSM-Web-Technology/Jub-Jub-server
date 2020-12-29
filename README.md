@@ -57,6 +57,3 @@ PR을 날린 레포로 가서 PR부분에서 내가 날린 PR을 클릭 => "clos
 <br/>
 # Commit 취소하기
 [Commit 취소하기](https://fuirosun.tistory.com/entry/git-git-push-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0){: target="_blank"}
-[건망증이 심한 엔지니어](https://techstock.biz){:target="_blank"}
-<br/>
-  
