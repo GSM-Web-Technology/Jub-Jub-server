@@ -34,6 +34,22 @@ public class SwaggerConfig {
     }
 
     @Bean
+    public Docket apiTest() {
+        version = "Test";
+        title = "JupJup API " + version;
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .useDefaultResponseMessages(false)
+                .groupName(version)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.gsm.jupjup.controller.test"))
+                .paths(PathSelectors.ant("/api/testapi/**"))
+                .build()
+                .apiInfo(apiInfo(title, version));
+
+    }
+
+    @Bean
     public Docket apiV1() {
         version = "V1";
         title = "JupJup API " + version;
@@ -42,24 +58,8 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false)
                 .groupName(version)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gsm.jupjup.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.gsm.jupjup.controller.v1"))
                 .paths(PathSelectors.ant("/api/v1/**"))
-                .build()
-                .apiInfo(apiInfo(title, version));
-
-    }
-
-    @Bean
-    public Docket apiV2() {
-        version = "V2";
-        title = "JupJup API " + version;
-
-        return new Docket(DocumentationType.SWAGGER_2)
-                .useDefaultResponseMessages(false)
-                .groupName(version)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gsm.jupjup.controller"))
-                .paths(PathSelectors.ant("/api/v2/**"))
                 .build()
                 .apiInfo(apiInfo(title, version));
 

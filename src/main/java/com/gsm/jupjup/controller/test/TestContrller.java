@@ -1,4 +1,4 @@
-package com.gsm.jupjup.controller;
+package com.gsm.jupjup.controller.test;
 
 import com.gsm.jupjup.domain.TestDomain;
 import com.gsm.jupjup.dto.test.TestResponseDto;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/testapi")
 public class TestContrller {
 
     //DI(의존성 주입)
