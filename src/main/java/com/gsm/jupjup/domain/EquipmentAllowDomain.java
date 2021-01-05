@@ -40,6 +40,10 @@ public class EquipmentAllowDomain {
     @JoinColumn(name = "auth_Idx")
     private AuthDomain authDomain;
 
+    @ManyToOne
+    @JoinColumn(name = "eq_Idx")
+    private EquipmentDomain equipmentDomain;
+
     @Builder
     public EquipmentAllowDomain(String name, int amount, byte[] img_allow, String reason, EquipmentEnum equipmentEnum){
         this.name = name;
