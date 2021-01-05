@@ -36,6 +36,10 @@ public class EquipmentAllowDomain {
     @CreatedDate
     private LocalDateTime allow_at;
 
+    @ManyToOne
+    @JoinColumn(name = "auth_Idx")
+    private AuthDomain authDomain;
+
     @Builder
     public EquipmentAllowDomain(String name, int amount, byte[] img, String reason, EquipmentEnum equipmentEnum){
         this.name = name;
