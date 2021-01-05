@@ -31,7 +31,11 @@ public class AuthDomain {
     private String name;
 
     @CreatedDate
-    private LocalDateTime create_at;
+    private LocalDateTime create_at_Auth;
+
+    @OneToOne
+    @JoinColumn(name = "laptop_Idx")
+    private LaptopDomain laptopDomain;
 
     @Builder
     public AuthDomain(String email, String classNumber, String password, String name){
