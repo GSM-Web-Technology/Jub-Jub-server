@@ -22,7 +22,7 @@ public class EquipmentAllowDomain {
 
     @Column
     @Lob
-    private byte[] img; //BLOB
+    private byte[] img_allow; //BLOB
 
     @Column
     private int amount;
@@ -41,10 +41,10 @@ public class EquipmentAllowDomain {
     private AuthDomain authDomain;
 
     @Builder
-    public EquipmentAllowDomain(String name, int amount, byte[] img, String reason, EquipmentEnum equipmentEnum){
+    public EquipmentAllowDomain(String name, int amount, byte[] img_allow, String reason, EquipmentEnum equipmentEnum){
         this.name = name;
         this.amount = amount;
-        this.img = img;
+        this.img_allow = img_allow;
         this.reason = reason;
         this.equipmentEnum = equipmentEnum;
     }
