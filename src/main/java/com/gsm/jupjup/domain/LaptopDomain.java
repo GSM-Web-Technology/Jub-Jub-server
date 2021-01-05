@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 public class LaptopDomain {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long laptop_Idx;
+    private String laptopSerialNumber;
 
     @Column
     private String laptopName;
@@ -23,11 +22,12 @@ public class LaptopDomain {
     @Column
     private String laptopbrand;
 
-    @Column
-    private String laptopSerialNumber;
-
     @CreatedDate
     private LocalDateTime create_at_Laptop;
+
+    @ManyToOne
+    @JoinColumn(name = "spec_Idx")
+    private LaptopSpecDomain laptopSpecDomain;
 
     @Builder
     public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber){

@@ -34,7 +34,7 @@ public class AuthDomain {
     private LocalDateTime create_at_Auth;
 
     @OneToOne
-    @JoinColumn(name = "laptop_Idx")
+    @JoinColumn(name = "laptopSerialNumber")
     private LaptopDomain laptopDomain;
 
     @Builder
