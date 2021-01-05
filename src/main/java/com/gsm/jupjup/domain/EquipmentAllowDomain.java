@@ -37,10 +37,6 @@ public class EquipmentAllowDomain {
     private LocalDateTime allow_at;
 
     @ManyToOne
-    @JoinColumn(name = "auth_Idx")
-    private AuthDomain authDomain;
-
-    @ManyToOne
     @JoinColumn(name = "eq_Idx")
     private EquipmentDomain equipmentDomain;
 

@@ -37,6 +37,10 @@ public class AuthDomain {
     @JoinColumn(name = "laptopSerialNumber")
     private LaptopDomain laptopDomain;
 
+    @ManyToOne
+    @JoinColumn(name = "eqa_Idx")
+    private EquipmentAllowDomain equipmentAllowDomain;
+
     @Builder
     public AuthDomain(String email, String classNumber, String password, String name){
         this.email = email;

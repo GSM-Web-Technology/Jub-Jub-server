@@ -35,4 +35,10 @@ public class EquipmentDomain {
         this.img_equipment = img_equipment;
         this.content = content;
     }
+
+    public void update(String name, byte[] img_equipment, String content){
+        this.name = name;
+        this.img_equipment = img_equipment;
+        this.content = content;
+    }
 }
