@@ -1,6 +1,6 @@
 package com.gsm.jupjup.service;
 
-import com.gsm.jupjup.dao.TestRepo;
+import com.gsm.jupjup.dao.TestRepository;
 import com.gsm.jupjup.domain.TestDomain;
 import com.gsm.jupjup.dto.test.TestResponseDto;
 import com.gsm.jupjup.dto.test.TestSaveRequestDto;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TestService {
 
     @Autowired
-    private TestRepo testRepo;
+    private TestRepository testRepo;
 
     @Transactional
     public Long save(TestSaveRequestDto testSaveRequestDto){
