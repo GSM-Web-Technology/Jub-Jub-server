@@ -1,5 +1,5 @@
 package com.gsm.jupjup.domain;
 
 public enum  EquipmentEnum {
-    waiting, accept, reject
+    ROLE_Waiting, ROLE_Accept, ROLE_Reject
 }

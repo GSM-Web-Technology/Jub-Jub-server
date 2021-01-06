@@ -33,6 +33,9 @@ public class AuthDomain {
     @CreatedDate
     private LocalDateTime create_at_Auth;
 
+    @Enumerated(EnumType.STRING)
+    private AuthEnum authority;
+
     @OneToOne
     @JoinColumn(name = "laptopSerialNumber")
     private LaptopDomain laptopDomain;
