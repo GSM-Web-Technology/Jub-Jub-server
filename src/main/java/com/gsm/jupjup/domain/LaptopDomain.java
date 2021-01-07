@@ -30,9 +30,10 @@ public class LaptopDomain {
     private LaptopSpecDomain laptopSpecDomain;
 
     @Builder
-    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber){
+    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber, LaptopSpecDomain laptopSpecDomain){
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;
         this.laptopSerialNumber = laptopSerialNumber;
+        this.laptopSpecDomain = laptopSpecDomain;
     }
 }
