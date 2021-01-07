@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class AuthDomain extends BaseTimeEntity {
@@ -38,6 +39,10 @@ public class AuthDomain extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "eqa_Idx")
     private EquipmentAllowDomain equipmentAllowDomain;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "salt_id")
+    private Salt salt;
 
     @Builder
     public AuthDomain(String email, String classNumber, String password, String name, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){

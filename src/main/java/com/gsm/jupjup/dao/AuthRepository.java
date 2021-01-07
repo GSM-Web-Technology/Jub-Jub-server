@@ -9,4 +9,6 @@ import java.util.ArrayList;
 
 public interface AuthRepository extends JpaRepository<AuthDomain, Long> {
     AuthDomain findByEmailAndPassword(String email, String password);
+    AuthDomain findByEmail(String email);
+    AuthDomain findByName(String username);
 }
