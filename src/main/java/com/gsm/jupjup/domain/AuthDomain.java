@@ -45,10 +45,12 @@ public class AuthDomain {
     private EquipmentAllowDomain equipmentAllowDomain;
 
     @Builder
-    public AuthDomain(String email, String classNumber, String password, String name){
+    public AuthDomain(String email, String classNumber, String password, String name, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
         this.email = email;
         this.classNumber = classNumber;
         this.password = password;
         this.name = name;
+        this.laptopDomain = laptopDomain;
+        this.equipmentAllowDomain = equipmentAllowDomain;
     }
 }
