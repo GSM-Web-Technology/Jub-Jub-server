@@ -1,9 +1,6 @@
 package com.gsm.jupjup.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class ReservationDomain {
     @Id
@@ -27,4 +25,6 @@ public class ReservationDomain {
     @ManyToOne
     @JoinColumn(name = "eqa_Idx")
     private EquipmentAllowDomain equipmentAllowDomain;
+
+
 }
