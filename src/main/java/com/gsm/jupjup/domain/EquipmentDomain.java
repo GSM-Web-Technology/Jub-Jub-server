@@ -2,6 +2,7 @@ package com.gsm.jupjup.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -26,19 +27,24 @@ public class EquipmentDomain {
     @Column
     private String content;
 
+    @Column
+    private int count;
+
     @CreatedDate
     private LocalDateTime create_at_equipment;
 
     @Builder
-    public EquipmentDomain(String name, byte[] img_equipment, String content){
+    public EquipmentDomain(String name, byte[] img_equipment, String content, int count){
         this.name = name;
         this.img_equipment = img_equipment;
         this.content = content;
+        this.count = count;
     }
 
-    public void update(String name, byte[] img_equipment, String content){
+    public void update(String name, byte[] img_equipment, String content, int count){
         this.name = name;
         this.img_equipment = img_equipment;
         this.content = content;
+        this.count = count;
     }
 }

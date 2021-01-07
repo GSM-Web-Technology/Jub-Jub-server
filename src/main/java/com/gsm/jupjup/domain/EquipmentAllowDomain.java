@@ -41,11 +41,12 @@ public class EquipmentAllowDomain {
     private EquipmentDomain equipmentDomain;
 
     @Builder
-    public EquipmentAllowDomain(String name, int amount, byte[] img_allow, String reason, EquipmentEnum equipmentEnum){
+    public EquipmentAllowDomain(String name, int amount, byte[] img_allow, String reason, EquipmentEnum equipmentEnum, EquipmentDomain equipmentDomain){
         this.name = name;
         this.amount = amount;
         this.img_allow = img_allow;
         this.reason = reason;
         this.equipmentEnum = equipmentEnum;
+        this.equipmentDomain = equipmentDomain;
     }
 }

@@ -7,6 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class LaptopDomainTest {
 
+    //insert Test
     @Test
     public void insert(){
         final LaptopDomain laptopDomain = LaptopDomain.builder()
@@ -22,6 +23,7 @@ public class LaptopDomainTest {
         assertThat(laptopbrand, is("Apple"));
     }
 
+    //LaptopSpec Laptop 연관관계 테스트
     @Test
     public void Laptop_LaptopSpec(){
         LaptopSpecDomain laptopSpecDomain = LaptopSpecDomain.builder()

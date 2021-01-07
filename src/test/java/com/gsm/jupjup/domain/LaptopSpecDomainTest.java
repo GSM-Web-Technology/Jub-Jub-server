@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class LaptopSpecDomainTest {
 
+    //insert Test
     @Test
     public void insert(){
         final LaptopSpecDomain laptopSpecDomain = LaptopSpecDomain.builder()
