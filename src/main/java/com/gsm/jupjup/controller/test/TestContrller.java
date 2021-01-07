@@ -1,6 +1,5 @@
 package com.gsm.jupjup.controller.test;
 
-import com.gsm.jupjup.domain.TestDomain;
 import com.gsm.jupjup.dto.test.TestResponseDto;
 import com.gsm.jupjup.dto.test.TestSaveRequestDto;
 import com.gsm.jupjup.dto.test.TestUpdateRequestDto;
