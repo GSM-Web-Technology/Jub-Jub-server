@@ -8,11 +8,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class AuthDomain {
+public class AuthDomain extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +28,8 @@ public class AuthDomain {
     @Column
     private String name;
 
-    @CreatedDate
-    private LocalDateTime create_at_Auth;
-
     @Enumerated(EnumType.STRING)
-    private AuthEnum authority;
+    private AuthEnum authEnum = AuthEnum.ROLE_Student;
 
     @OneToOne
     @JoinColumn(name = "laptopSerialNumber")
