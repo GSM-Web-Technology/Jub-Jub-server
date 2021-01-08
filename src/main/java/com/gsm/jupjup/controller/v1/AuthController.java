@@ -2,7 +2,6 @@ package com.gsm.jupjup.controller.v1;
 
 import com.google.gson.JsonObject;
 import com.gsm.jupjup.domain.AuthDomain;
-import com.gsm.jupjup.dto.v1.auth.AuthLoginRequest;
 import com.gsm.jupjup.dto.v1.auth.AuthSaveRequestDto;
 import com.gsm.jupjup.service.v1.auth.AuthServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +14,20 @@ public class AuthController {
     @Autowired
     private AuthServiceImpl authService;
 
-//    @ResponseBody
-//    @PostMapping("/auth")
-//    public String SignUp(@RequestBody AuthSaveRequestDto authSaveRequestDto){
+//    @PostMapping("/signup")
+//    public String signUpUser(@RequestBody AuthSaveRequestDto authSaveRequestDto){
 //        JsonObject obj = new JsonObject();
-//        authService.SingUp(authSaveRequestDto);
-//        obj.addProperty("email", authSaveRequestDto.getEmail());
-//        obj.addProperty("name", authSaveRequestDto.getName());
-//        obj.addProperty("classNumber", authSaveRequestDto.getClassNumber());
+//        try {
+//            authService.SignUpUser(authSaveRequestDto);
+//            obj.addProperty("msg", "success");
+//            obj.addProperty("1", "회원가입을 성공적으로 완료했습니다");
+//        } catch (Exception e){
+//            obj.addProperty("msg", "failed");
+//            obj.addProperty("1", "회원가입을 하는 도중 오류가 발생했습니다");
+//        }
 //        return obj.toString();
 //    }
+
 //
 //    @ResponseBody
 //    @PostMapping("/login")

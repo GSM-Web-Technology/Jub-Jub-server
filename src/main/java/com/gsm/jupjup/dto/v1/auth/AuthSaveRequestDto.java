@@ -1,12 +1,10 @@
 package com.gsm.jupjup.dto.v1.auth;
 
 import com.gsm.jupjup.domain.AuthDomain;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

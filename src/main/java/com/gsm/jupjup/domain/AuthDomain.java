@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @Entity
 public class AuthDomain extends BaseTimeEntity {
@@ -32,17 +33,14 @@ public class AuthDomain extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private AuthEnum authEnum = AuthEnum.ROLE_Student;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "laptopSerialNumber")
     private LaptopDomain laptopDomain;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "eqa_Idx")
     private EquipmentAllowDomain equipmentAllowDomain;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "salt_id")
-    private Salt salt;
 
     @Builder
     public AuthDomain(String email, String classNumber, String password, String name, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
