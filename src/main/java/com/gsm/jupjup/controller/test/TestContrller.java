@@ -22,7 +22,7 @@ public class TestContrller {
         return testService.save(testSaveRequestDto);
     }
 
-    //한개 게시물 찾기 컨틀롤러(엔드포인트)
+    //한개 게시물 찾기 컨틀롤러(엔x드포인트)
     @GetMapping("/test/{id}")
     //URL 파라미터로 id값 받기
     public TestResponseDto findById(@PathVariable Long id){
