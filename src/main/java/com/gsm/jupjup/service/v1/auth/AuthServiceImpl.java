@@ -26,19 +26,22 @@ public class AuthServiceImpl implements AuthService {
         AuthDomain authDomain = authRepository.findByEmail(authSaveRequestDto.getEmail());
         String email = authSaveRequestDto.getEmail();
         String password = authSaveRequestDto.getPassword();
-        String name = authSaveRequestDto.getPassword();
-        String classNumnber = authSaveRequestDto.getClassNumber();
+        String name = authSaveRequestDto.getName();
+        String classNumber = authSaveRequestDto.getClassNumber();
         int c_len = authSaveRequestDto.getClassNumber().length();
 
-        if(authDomain.getEmail() != null)
+        if(authDomain != null){
             throw new Exception("이메일 중복");
-        if(c_len < 4)
+        }
+        if(c_len < 4){
             throw new Exception("ClassNumber는 4자리입니다.");
-        if(isValidEmail(authSaveRequestDto.getEmail()) == false)
+        }
+        if(isValidEmail(authSaveRequestDto.getEmail()) == false){
             throw new Exception("이메일 형식을 지켜주세요");
-        if(email.isEmpty() && password.isEmpty() && name.isEmpty() && classNumnber.isEmpty())
-            throw new Exception("전부 입력해주세요");
-
+        }
+        if(email.isEmpty() || password.isEmpty() || name.isEmpty() || classNumber.isEmpty()){
+            throw new Exception("모두 입력해주세요");
+        }
         PasswordEncoder passwordEncoder = new PasswordEncoding();
         String newPassword1 = passwordEncoder.encode(authSaveRequestDto.getPassword());
         System.out.println(newPassword1);
