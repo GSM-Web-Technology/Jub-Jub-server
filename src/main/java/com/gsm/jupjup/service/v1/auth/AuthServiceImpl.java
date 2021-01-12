@@ -5,16 +5,21 @@ import com.gsm.jupjup.domain.AuthDomain;
 import com.gsm.jupjup.dto.v1.auth.AuthLoginRequest;
 import com.gsm.jupjup.dto.v1.auth.AuthSaveRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
 public class AuthServiceImpl implements AuthService {
 
     @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
     private AuthRepository authRepository;
+
 
     @Override
     public void SignUpUser(AuthSaveRequestDto authSaveRequestDto) {
@@ -30,9 +35,9 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public AuthDomain loginUser(AuthLoginRequest authLoginRequest) throws Exception {
+    public Optional<AuthDomain> loginUser(AuthLoginRequest authLoginRequest) throws Exception {
         PasswordEncoder passwordEncoder = new PasswordEncoding();
-        AuthDomain authDomain =  authRepository.findByEmail(authLoginRequest.getEmail());
+        AuthDomain authDomain = authRepository.findByEmail(authLoginRequest.getEmail());
         if(authDomain == null) {
             System.out.println("============================================================");
             throw new Exception("멤버가 조회되지 않음");

@@ -2,10 +2,8 @@ package com.gsm.jupjup.domain;
 
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,6 +28,9 @@ public class AuthDomain extends BaseTimeEntity {
     @Column
     private String name;
 
+    @Column
+    private String token;
+
     @Enumerated(EnumType.STRING)
     private AuthEnum authEnum = AuthEnum.ROLE_Student;
 
@@ -43,11 +44,12 @@ public class AuthDomain extends BaseTimeEntity {
 
 
     @Builder
-    public AuthDomain(String email, String classNumber, String password, String name, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
+    public AuthDomain(String email, String classNumber, String password, String name, String token, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
         this.email = email;
         this.classNumber = classNumber;
         this.password = password;
         this.name = name;
+        this.token = token;
         this.laptopDomain = laptopDomain;
         this.equipmentAllowDomain = equipmentAllowDomain;
     }

@@ -14,31 +14,31 @@ public class AuthServiceTest {
     @Autowired
     private AuthService authService;
 
-    @Test
-    public void signUp(){
-        AuthSaveRequestDto authSaveRequestDto = AuthSaveRequestDto.builder()
-                .email("s19066@gsm.hs.kr")
-                .password("1234")
-                .name("김상현")
-                .classNumber("2101")
-                .build();
-        authService.SignUpUser(authSaveRequestDto);
-    }
-
-    @Test
-    public void login(){
-        AuthLoginRequest authLoginRequest = AuthLoginRequest.builder()
-                .email("s19066@gsm.hs.kr")
-                .password("1234")
-                .build();
-
-        try {
-            authService.loginUser(authLoginRequest);
-            System.out.println("============================================================");
-            System.out.println("로그인 성공");
-            System.out.println("============================================================");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @Test
+//    public void signUp(){
+//        AuthSaveRequestDto authSaveRequestDto = AuthSaveRequestDto.builder()
+//                .email("s19066@gsm.hs.kr")
+//                .password("1234")
+//                .name("김상현")
+//                .classNumber("2101")
+//                .build();
+//        authService.SignUpUser(authSaveRequestDto);
+//    }
+//
+//    @Test
+//    public void login(){
+//        AuthLoginRequest authLoginRequest = AuthLoginRequest.builder()
+//                .email("s19066@gsm.hs.kr")
+//                .password("1234")
+//                .build();
+//
+//        try {
+//            authService.loginUser(authLoginRequest);
+//            System.out.println("============================================================");
+//            System.out.println("로그인 성공");
+//            System.out.println("============================================================");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
