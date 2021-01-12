@@ -16,10 +16,10 @@ public class AuthDomain extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long auth_Idx;
 
-    @Column(nullable = false)
+    @Column
     private String email;
 
-    @Column(length = 4, nullable = false)
+    @Column
     private String classNumber;
 
     @Column
