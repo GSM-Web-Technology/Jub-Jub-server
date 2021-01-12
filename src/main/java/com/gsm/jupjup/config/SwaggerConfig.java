@@ -64,6 +64,4 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo(title, version));
 
     }
-
-
 }
