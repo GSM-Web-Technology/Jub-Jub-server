@@ -9,8 +9,5 @@ import java.util.Optional;
 
 
 public interface AuthRepository extends JpaRepository<AuthDomain, Long> {
-    AuthDomain findByEmailAndPassword(String email, String password);
-    //AuthDomain findByEmail(String email);
-    AuthDomain findByName(String username);
-    Optional<AuthDomain> findByEmail(String email);
+    AuthDomain findByEmail(String email);
 }

@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface AuthService {
     void SignUpUser(AuthSaveRequestDto authSaveRequestDto);
 
-    Optional<AuthDomain> loginUser(AuthLoginRequest authLoginRequest) throws Exception;
+    AuthDomain loginUser(AuthLoginRequest authLoginRequest) throws Exception;
 }

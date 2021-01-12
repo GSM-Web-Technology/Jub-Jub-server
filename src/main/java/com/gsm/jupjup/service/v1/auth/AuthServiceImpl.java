@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Optional<AuthDomain> loginUser(AuthLoginRequest authLoginRequest) throws Exception {
+    public AuthDomain loginUser(AuthLoginRequest authLoginRequest) throws Exception {
         PasswordEncoder passwordEncoder = new PasswordEncoding();
         AuthDomain authDomain = authRepository.findByEmail(authLoginRequest.getEmail());
         if(authDomain == null) {

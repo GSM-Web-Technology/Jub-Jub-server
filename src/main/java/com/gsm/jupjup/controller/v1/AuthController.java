@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
+import java.util.Optional;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -33,43 +34,11 @@ public class AuthController {
 //    @Autowired
 //    private JwtUtil jwtUtil;
 
-//    @PostMapping("/signup")
-//    public String signUpUser(@RequestBody AuthSaveRequestDto authSaveRequestDto){
-//        JsonObject obj = new JsonObject();
-//        try {
-//            authService.signUp(authSaveRequestDto);
-//            obj.addProperty("msg", "success");
-//            obj.addProperty("1", "회원가입을 성공적으로 완료했습니다");
-//        } catch (Exception e){
-//            obj.addProperty("msg", "failed");
-//            obj.addProperty("1", "회원가입을 하는 도중 오류가 발생했습니다");
-//        }
-//        return obj.toString();
-//    }
-
-//    @ResponseBody
-//    @PostMapping("/login")
-//    public String Login(@RequestBody AuthLoginRequest authLoginRequest) throws Exception {
-//        JsonObject obj = new JsonObject();
-//        try {
-//            AuthDomain authDomain = authService.loginUser(authLoginRequest);
-//            String jwt = jwtUtil.getUserToken(authLoginRequest);
-//            obj.addProperty("token", jwt);
-//            obj.addProperty("email", authDomain.getEmail());
-//            obj.addProperty("classNumber", authDomain.getClassNumber());
-//        } catch (Exception e){
-//            System.out.println(e);
-//            obj.addProperty("msg", "로그인 실패");
-//        }
-//        return obj.toString();
-//    }
-
-
-    @PostMapping("/signUp")
-    public String SignUp(@RequestBody AuthSaveRequestDto authSaveRequestDto){
+    @PostMapping("/signup")
+    public String  signUpUser(@RequestBody AuthSaveRequestDto authSaveRequestDto){
         JsonObject obj = new JsonObject();
         try {
-            authService.signUp(authSaveRequestDto);
+            authService.SignUpUser(authSaveRequestDto);
             obj.addProperty("msg", "success");
             obj.addProperty("1", "회원가입을 성공적으로 완료했습니다");
         } catch (Exception e){
@@ -79,17 +48,17 @@ public class AuthController {
         return obj.toString();
     }
 
-    @PostMapping("/signIn")
-    public String signIn(AuthLoginRequest authLoginRequest){
+    @ResponseBody
+    @PostMapping("/login")
+    public String Login(@RequestBody AuthLoginRequest authLoginRequest) throws Exception {
         JsonObject obj = new JsonObject();
         try {
-            AuthDomain authDomain = authService.signIn(authLoginRequest);
+            AuthDomain authDomain = authService.loginUser(authLoginRequest);
             obj.addProperty("email", authDomain.getEmail());
             obj.addProperty("classNumber", authDomain.getClassNumber());
-            obj.addProperty("token", authDomain.getToken());
         } catch (Exception e){
-            obj.addProperty("msg", "failed");
-            obj.addProperty("1", "회원가입을 하는 도중 오류가 발생했습니다");
+            System.out.println(e);
+            obj.addProperty("msg", "로그인 실패");
         }
         return obj.toString();
     }
