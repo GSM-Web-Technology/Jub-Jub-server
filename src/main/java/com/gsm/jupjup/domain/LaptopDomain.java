@@ -36,4 +36,9 @@ public class LaptopDomain extends BaseTimeEntity{
         this.laptopSerialNumber = laptopSerialNumber;
         this.laptopSpecDomain = laptopSpecDomain;
     }
+
+    public void update(String laptopName, String laptopbrand){
+        this.laptopName = laptopName;
+        this.laptopbrand = laptopbrand;
+    }
 }

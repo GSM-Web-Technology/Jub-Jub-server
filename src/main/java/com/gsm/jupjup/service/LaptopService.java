@@ -20,13 +20,15 @@ public class LaptopService {
 
     @Transactional
     public String update(String laptopSerialNumber, LaptopSaveRequestDto laptopSaveRequestDto){
-        LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(() -> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+        LaptopDomain laptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(() -> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+        laptopDomain.update(laptopSaveRequestDto.getLaptopName(), laptopSaveRequestDto.getLaptopbrand());
         return laptopSerialNumber;
     }
 
     @Transactional
     public void delete(String laptopSerialNumber){
         LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(()-> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+        laptopRepo.delete(LaptopDomain);
     }
 
     @Transactional(readOnly = true)

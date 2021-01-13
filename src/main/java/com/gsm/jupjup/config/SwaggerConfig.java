@@ -1,3 +1,4 @@
+
 package com.gsm.jupjup.config;
 
 import org.springframework.context.annotation.Bean;
@@ -64,4 +65,5 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo(title, version));
 
     }
+
 }
