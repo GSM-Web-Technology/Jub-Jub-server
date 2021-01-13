@@ -4,7 +4,6 @@ import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
 import com.gsm.jupjup.dto.Equipment.EquipmentRequestDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
-import com.gsm.jupjup.dto.test.TestResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +27,7 @@ public class EquipmentService {
     };
 
     @Transactional
-    public void delete(Long eq_idx){
+    public void deleteById(Long eq_idx){
         EquipmentDomain equipmentDomain = equipmentRepo.findById(eq_idx).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. eq_idx="+eq_idx));
         equipmentRepo.delete(equipmentDomain);
     }
