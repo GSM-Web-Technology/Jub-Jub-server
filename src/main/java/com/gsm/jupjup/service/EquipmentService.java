@@ -26,5 +26,10 @@ public class EquipmentService {
         return eq_idx;
     };
 
+    @Transactional
+    public void delete(Long eq_idx){
+        EquipmentDomain equipmentDomain = equipmentRepo.findById(eq_idx).orElseThrow(() -> new IllegalArgumentException("해당 장비는 없습니다. id="+eq_idx));
+        equipmentRepo.delete(equipmentDomain);
+    }
 
 }
