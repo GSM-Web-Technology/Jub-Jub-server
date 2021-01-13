@@ -34,7 +34,7 @@ public class AuthController {
     private RedisUtil redisUtil;
 
     @PostMapping("/signup")
-    public String  signUpUser(@RequestBody AuthSaveRequestDto authSaveRequestDto){
+    public String signUpUser(@RequestBody AuthSaveRequestDto authSaveRequestDto){
         JsonObject obj = new JsonObject();
         try {
             authService.SignUpUser(authSaveRequestDto);
