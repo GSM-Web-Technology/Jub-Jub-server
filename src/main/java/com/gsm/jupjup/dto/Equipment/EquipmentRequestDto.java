@@ -13,13 +13,14 @@ public class EquipmentRequestDto {
     private String name;
     private byte[] img_equipment;
     private String content;
-
+    private int count;
 
     @Builder
-    public EquipmentRequestDto(String name, byte[] img_equipment, String content, LocalDateTime create_at_equipment){
+    public EquipmentRequestDto(String name, byte[] img_equipment, String content, int count){
         this.name = name;
         this.img_equipment= img_equipment;
         this.content = content;
+        this.count = count;
     }
 
     public EquipmentDomain toEntity(){
@@ -27,6 +28,7 @@ public class EquipmentRequestDto {
                 .name(name)
                 .img_equipment(img_equipment)
                 .content(content)
+                .count(count)
                 .build();
     }
 }
