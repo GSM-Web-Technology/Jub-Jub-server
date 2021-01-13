@@ -9,9 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class EquipmentDomain {
+public class EquipmentDomain extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eq_Idx;
@@ -28,9 +27,6 @@ public class EquipmentDomain {
 
     @Column
     private int count;
-
-    @CreatedDate
-    private LocalDateTime create_at_equipment;
 
     @Builder
     public EquipmentDomain(String name, byte[] img_equipment, String content, int count){
