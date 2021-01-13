@@ -1,7 +1,6 @@
 package com.gsm.jupjup.dto.Equipment;
 
 import com.gsm.jupjup.domain.EquipmentDomain;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
