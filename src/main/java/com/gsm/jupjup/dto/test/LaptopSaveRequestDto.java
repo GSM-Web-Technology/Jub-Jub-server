@@ -28,6 +28,9 @@ public class LaptopSaveRequestDto {
         this.create_at_Laptop = create_at_Laptop;
     }
 
+    public LaptopSaveRequestDto(LaptopDomain laptopDomain) {
+    }
+
     public LaptopDomain toEntity(){
         return LaptopDomain.builder()
                 .laptopSerialNumber(laptopSerialNumber)
@@ -36,3 +39,7 @@ public class LaptopSaveRequestDto {
                 .build();
     }
 }
+// 1. client에서 보낼 data를 생각하고.
+// 2. data를 갖고 DTO를 생각한다.
+// 3. DTO기반 service 객체를 만들고.(+util class 작성)
+// 4. service객체로 controller를 만든다.

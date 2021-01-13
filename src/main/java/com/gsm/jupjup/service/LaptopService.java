@@ -1,6 +1,7 @@
 package com.gsm.jupjup.service;
 
 import com.gsm.jupjup.dao.LaptopRepository;
+import com.gsm.jupjup.domain.LaptopDomain;
 import com.gsm.jupjup.dto.test.LaptopSaveRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,22 @@ public class LaptopService {
     @Transactional
     public String save(LaptopSaveRequestDto laptopSaveRequestDto){
         return laptopRepo.save(laptopSaveRequestDto.toEntity()).getLaptopSerialNumber();
+    }
+
+    @Transactional
+    public String update(String laptopSerialNumber, LaptopSaveRequestDto laptopSaveRequestDto){
+        LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(() -> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+        return laptopSerialNumber;
+    }
+
+    @Transactional
+    public void delete(String laptopSerialNumber){
+        LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(()-> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+    }
+
+    @Transactional(readOnly = true)
+    public LaptopSaveRequestDto findById(String laptopSerialNumber){
+        LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(() -> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
+        return new LaptopSaveRequestDto(LaptopDomain);
     }
 }

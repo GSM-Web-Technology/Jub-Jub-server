@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class LaptopDomain {
+public class LaptopDomain extends BaseTimeEntity{
 
     @Id
     private String laptopSerialNumber;
