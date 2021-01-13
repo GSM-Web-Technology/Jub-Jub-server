@@ -31,8 +31,9 @@ public class AuthDomain extends BaseTimeEntity {
     @Column
     private String token;
 
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private AuthEnum authEnum = AuthEnum.ROLE_Student;
+    private AuthEnum authEnum = AuthEnum.ROLE_NOT_PERMITTED;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "laptopSerialNumber")

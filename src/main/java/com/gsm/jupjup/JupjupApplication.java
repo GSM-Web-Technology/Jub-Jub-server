@@ -16,6 +16,4 @@ public class JupjupApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JupjupApplication.class, args);
 	}
-
-
 }

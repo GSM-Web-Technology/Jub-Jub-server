@@ -38,8 +38,7 @@ public class AuthController {
         JsonObject obj = new JsonObject();
         try {
             authService.SignUpUser(authSaveRequestDto);
-            obj.addProperty("msg", "success");
-            obj.addProperty("1", "회원가입을 성공적으로 완료했습니다");
+            obj.addProperty("success", "회원가입 성공");
         } catch (Exception e){
             System.out.println(e);
             obj.addProperty("msg", String.valueOf(e));
@@ -59,7 +58,7 @@ public class AuthController {
 
             Cookie accessToken = cookieUtil.createCookie(JwtUtil.ACCESS_TOKEN_NAME, token);
             Cookie refreshToken = cookieUtil.createCookie(JwtUtil.REFRESH_TOKEN_NAME, refreshJwt);
-            //redisUtil.setDataExpire(refreshJwt, authDomain.getEmail(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
+            redisUtil.setDataExpire(refreshJwt, authDomain.getEmail(), JwtUtil.REFRESH_TOKEN_VALIDATION_SECOND);
 
             res.addCookie(accessToken);
             res.addCookie(refreshToken);
