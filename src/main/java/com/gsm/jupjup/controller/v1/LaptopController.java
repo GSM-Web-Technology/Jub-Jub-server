@@ -21,7 +21,7 @@ public class LaptopController {
 
     @GetMapping("/laptop/{laptopSerialNumber}")
     public LaptopSaveRequestDto findByLaptopSerialNumber(@PathVariable String laptopSerialNumber){
-        return laptopService.findById(laptopSerialNumber);
+        return laptopService.findByLaptopSerialNumber(laptopSerialNumber);
     }
 
     @DeleteMapping("/laptop/{laptopSerialNumber}")

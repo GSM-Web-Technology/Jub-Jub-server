@@ -32,7 +32,7 @@ public class LaptopService {
     }
 
     @Transactional(readOnly = true)
-    public LaptopSaveRequestDto findById(String laptopSerialNumber){
+    public LaptopSaveRequestDto findByLaptopSerialNumber(String laptopSerialNumber){
         LaptopDomain LaptopDomain = laptopRepo.findByLaptopSerialNumber(laptopSerialNumber).orElseThrow(() -> new IllegalArgumentException("해당 노트북이 없습니다. SerialNumber:"+laptopSerialNumber));
         return new LaptopSaveRequestDto(LaptopDomain);
     }
