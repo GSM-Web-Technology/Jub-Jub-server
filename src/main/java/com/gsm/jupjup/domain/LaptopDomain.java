@@ -36,7 +36,7 @@ public class LaptopDomain extends BaseTimeEntity{
         this.laptopSerialNumber = laptopSerialNumber;
         this.laptopSpecDomain = laptopSpecDomain;
     }
-
+    //update 문에 사용할 생성자 정의.
     public void update(String laptopName, String laptopbrand){
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;

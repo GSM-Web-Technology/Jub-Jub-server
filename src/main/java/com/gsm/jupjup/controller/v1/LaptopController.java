@@ -1,6 +1,7 @@
 package com.gsm.jupjup.controller.v1;
 
 
+import com.gsm.jupjup.dto.test.LaptopResponseDto;
 import com.gsm.jupjup.dto.test.LaptopSaveRequestDto;
 import com.gsm.jupjup.service.LaptopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class LaptopController {
     }
 
     @GetMapping("/laptop/{laptopSerialNumber}")
-    public LaptopSaveRequestDto findByLaptopSerialNumber(@PathVariable String laptopSerialNumber){
+    public LaptopResponseDto findByLaptopSerialNumber(@PathVariable String laptopSerialNumber){
         return laptopService.findByLaptopSerialNumber(laptopSerialNumber);
     }
 

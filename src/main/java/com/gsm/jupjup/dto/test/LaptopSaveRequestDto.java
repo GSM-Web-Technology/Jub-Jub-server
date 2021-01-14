@@ -28,8 +28,6 @@ public class LaptopSaveRequestDto {
         this.create_at_Laptop = create_at_Laptop;
     }
 
-    public LaptopSaveRequestDto(LaptopDomain laptopDomain) {
-    }
 
     public LaptopDomain toEntity(){
         return LaptopDomain.builder()
