@@ -1,10 +1,8 @@
 package com.gsm.jupjup.domain;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
