@@ -20,21 +20,21 @@ public class EquipmentService {
     }
 
     @Transactional
-    public Long update(Long eq_idx, EquipmentRequestDto equipmentRequestDto){
-        EquipmentDomain equipmentDomain = equipmentRepo.findById(eq_idx).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. eq_idx="+eq_idx));
+    public Long update(String name, EquipmentRequestDto equipmentRequestDto){
+        EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
         equipmentDomain.update(equipmentRequestDto.getName(), equipmentRequestDto.getImg_equipment(), equipmentRequestDto.getContent(), equipmentRequestDto.getCount());
-        return eq_idx;
+        return equipmentDomain.getEq_Idx();
     };
 
     @Transactional
-    public void deleteById(Long eq_idx){
-        EquipmentDomain equipmentDomain = equipmentRepo.findById(eq_idx).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. eq_idx="+eq_idx));
+    public void deleteByName(String name){
+        EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
         equipmentRepo.delete(equipmentDomain);
     }
 
     @Transactional(readOnly = true)
-    public EquipmentResponseDto findById(Long eq_idx){
-        EquipmentDomain equipmentDomain = equipmentRepo.findById(eq_idx).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. eq_idx="+eq_idx));
+    public EquipmentResponseDto findByName(String name){
+        EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
         return new EquipmentResponseDto(equipmentDomain);
     }
 }

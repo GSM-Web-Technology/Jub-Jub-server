@@ -19,20 +19,20 @@ public class EquipmentController {
         return equipmentService.save(equipmentRequestDto);
     }
 
-    @GetMapping("/equipment/{eq_idx}")
-    public EquipmentResponseDto findById(@PathVariable Long eq_idx){
-        return equipmentService.findById(eq_idx);
+    @GetMapping("/equipment/{name}")
+    public EquipmentResponseDto findByName(@PathVariable String name){
+        return equipmentService.findByName(name);
     }
 
-    @PutMapping("/equipmnet/{eq_idx}")
-    public Long update(@PathVariable Long eq_idx, @RequestBody EquipmentRequestDto equipmentRequestDto){
-        return equipmentService.update(eq_idx, equipmentRequestDto);
+    @PutMapping("/equipmnet/{name}")
+    public Long update(@PathVariable String name, @RequestBody EquipmentRequestDto equipmentRequestDto){
+        return equipmentService.update(name, equipmentRequestDto);
     }
 
-    @DeleteMapping("/equipmnet/{eq_idx}")
-    public Long deleteById(@PathVariable Long eq_idx){
-        equipmentService.deleteById(eq_idx);
-        return eq_idx;
+    @DeleteMapping("/equipmnet/{name}")
+    public String deleteByName(@PathVariable String name){
+        equipmentService.deleteByName(name);
+        return name;
     };
 
 }
