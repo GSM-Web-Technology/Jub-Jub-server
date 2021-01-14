@@ -61,7 +61,6 @@ public class AuthDomainTest {
     @Test
     public void Auth_EquipmentAllow(){
         final EquipmentAllowDomain equipmentAllowDomain = EquipmentAllowDomain.builder()
-                .name("김상현")
                 .amount(9)
                 .reason("이유")
                 .equipmentEnum(EquipmentEnum.ROLE_Accept)

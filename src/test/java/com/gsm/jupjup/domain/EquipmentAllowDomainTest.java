@@ -10,16 +10,13 @@ public class EquipmentAllowDomainTest {
     @Test
     public void insert(){
         EquipmentAllowDomain equipmentAllowDomain = EquipmentAllowDomain.builder()
-                .name("Mac Pro")
                 .amount(1)
                 .reason("공부")
                 .equipmentEnum(EquipmentEnum.ROLE_Accept)
                 .build();
 
-        final String name = equipmentAllowDomain.getName();
         final int amount = equipmentAllowDomain.getAmount();
 
-        assertThat(name, is("Mac Pro"));
         assertThat(amount, is(1));
     }
 
