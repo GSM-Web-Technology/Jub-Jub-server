@@ -38,12 +38,4 @@ public class LaptopSpecDomain {
         this.SSD = SSD;
         this.HDD = HDD;
     }
-
-    public void update(String CPU, String GPU, String RAM, String SSD, String HDD){
-        this.CPU = CPU;
-        this.GPU = GPU;
-        this.RAM = RAM;
-        this.SSD = SSD;
-        this.HDD = HDD;
-    }
 }
