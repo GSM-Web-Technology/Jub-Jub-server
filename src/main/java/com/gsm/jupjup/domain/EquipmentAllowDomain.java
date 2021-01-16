@@ -7,22 +7,14 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class EquipmentAllowDomain {
+public class EquipmentAllowDomain extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eqa_Idx;
-
-    @Column
-    private String name;
-
-    @Column
-    @Lob
-    private byte[] img_allow; //BLOB
 
     @Column
     private int amount;
@@ -31,7 +23,7 @@ public class EquipmentAllowDomain {
     private String reason;
 
     @Enumerated(EnumType.STRING)
-    private EquipmentEnum equipmentEnum;
+    private EquipmentEnum equipmentEnum = EquipmentEnum.ROLE_Waiting;
 
     @CreatedDate
     private LocalDateTime allow_at;
@@ -41,12 +33,15 @@ public class EquipmentAllowDomain {
     private EquipmentDomain equipmentDomain;
 
     @Builder
-    public EquipmentAllowDomain(String name, int amount, byte[] img_allow, String reason, EquipmentEnum equipmentEnum, EquipmentDomain equipmentDomain){
-        this.name = name;
+    public EquipmentAllowDomain(int amount, String reason, EquipmentDomain equipmentDomain){
         this.amount = amount;
-        this.img_allow = img_allow;
         this.reason = reason;
-        this.equipmentEnum = equipmentEnum;
         this.equipmentDomain = equipmentDomain;
     }
+
+    public void update(int amount, String reason){
+        this.amount = amount;
+        this.reason = reason;
+    }
 }
+
