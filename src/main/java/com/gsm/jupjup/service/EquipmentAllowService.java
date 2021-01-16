@@ -18,6 +18,9 @@ public class EquipmentAllowService {
     @Autowired
     EquipmentRepository equipmentRepo;
 
+    @Autowired
+    EquipmentService equipmentService;
+
     @Transactional
     public Long save(EquipmentAllowRequestDto equipmentAllowRequestDto){
         return equipmentAllowRepo.save(equipmentAllowRequestDto.toEntity()).getEqa_Idx();
@@ -29,10 +32,12 @@ public class EquipmentAllowService {
         EquipmentAllowSaveDto equipmentAllowSaveDto =
                 EquipmentAllowSaveDto.builder().
                                     equipmentAllowRequestDto(equipmentAllowRequestDto).
-                                    equipmentDomain(equipmentDomain)
-                                    .build();
+                                    equipmentDomain(equipmentDomain).
+                                    build();
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowSaveDto.toEntity();
+        int equipmentAmount = equipmentDomain.getCount() - equipmentAllowDomain.getAmount();
         equipmentAllowRepo.save(equipmentAllowDomain);
+        equipmentService.updateAmount(equipmentName, equipmentAmount);
     }
 
     @Transactional
