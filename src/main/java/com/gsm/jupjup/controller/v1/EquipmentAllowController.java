@@ -18,17 +18,23 @@ public class EquipmentAllowController {
         return equipmentAllowService.save(equipmentAllowRequestDto);
     }
 
+    @PostMapping("/equipmentAllow/{name}")
+    public void saveEquipmentAllowData(@PathVariable() String name, @RequestBody EquipmentAllowRequestDto equipmentAllowRequestDto){
+        equipmentAllowService.saveEquipmentAllowData(name, equipmentAllowRequestDto);
+    }
+
     @GetMapping("/equipmentAllow/{eqa_idx}")
     public EquipmentAllowResponseDto equipmentAllowResponseDto(@PathVariable Long eqa_idx){
         return equipmentAllowService.findById(eqa_idx);
     }
+
 
 //    @PutMapping("/equipmentAllow/{epa_idx}")
 //    public Long update(@PathVariable Long epa_idx, @RequestBody EquipmentAllowRequestDto equipmentAllowRequestDto){
 //        return equipmentAllowService.update(epa_idx, equipmentAllowRequestDto);
 //    }
 
-    @PostMapping("/equipmentAllow/{eqa_idx}")
+    @DeleteMapping("/equipmentAllow/{eqa_idx}")
     public void delete(@PathVariable Long eqa_idx){
         equipmentAllowService.deleteById(eqa_idx);
     }
