@@ -27,6 +27,14 @@ public class EquipmentService {
     };
 
     @Transactional
+    public String updateAmount(String name, int count){
+        EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
+        equipmentDomain.updateCount(count);
+        equipmentRepo.save(equipmentDomain);
+        return equipmentDomain.getName();
+    }
+
+    @Transactional
     public void deleteByName(String name){
         EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
         equipmentRepo.delete(equipmentDomain);
