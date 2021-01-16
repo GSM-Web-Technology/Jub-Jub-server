@@ -63,7 +63,6 @@ public class AuthDomainTest {
         final EquipmentAllowDomain equipmentAllowDomain = EquipmentAllowDomain.builder()
                 .amount(9)
                 .reason("이유")
-                .equipmentEnum(EquipmentEnum.ROLE_Accept)
                 .build();
         final AuthDomain authDomain = AuthDomain.builder()
                 .email("s19066@gsm.hs.kr")
