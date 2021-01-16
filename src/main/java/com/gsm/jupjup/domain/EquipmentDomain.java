@@ -40,4 +40,8 @@ public class EquipmentDomain extends BaseTimeEntity{
         this.content = content;
         this.count = count;
     }
+
+    public void updateCount(int Count){
+        this.count = Count;
+    }
 }
