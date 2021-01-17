@@ -6,14 +6,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class EquipmentResponseDto {
+public class EquipmentResDto {
     private Long eq_Idx;
     private String name;
     private byte[] img_equipment;
     private String content;
     private int count;
 
-    public EquipmentResponseDto(EquipmentDomain equipmentDomain){
+    public EquipmentResDto(EquipmentDomain equipmentDomain){
         this.eq_Idx = equipmentDomain.getEq_Idx();
         this.name = equipmentDomain.getName();
         this.img_equipment = equipmentDomain.getImg_equipment();

@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class EquipmentRequestDto {
+public class EquipmentReqDto {
     private String name;
     private byte[] img_equipment;
     private String content;
     private int count;
 
     @Builder
-    public EquipmentRequestDto(String name, byte[] img_equipment, String content, int count){
+    public EquipmentReqDto(String name, byte[] img_equipment, String content, int count){
         this.name = name;
         this.img_equipment= img_equipment;
         this.content = content;

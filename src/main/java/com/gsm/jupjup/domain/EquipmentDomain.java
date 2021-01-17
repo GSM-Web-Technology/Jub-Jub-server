@@ -1,5 +1,6 @@
 package com.gsm.jupjup.domain;
 
+import com.gsm.jupjup.dto.Equipment.EquipmentReqDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,11 +35,11 @@ public class EquipmentDomain extends BaseTimeEntity{
         this.count = count;
     }
 
-    public void update(String name, byte[] img_equipment, String content, int count){
-        this.name = name;
-        this.img_equipment = img_equipment;
-        this.content = content;
-        this.count = count;
+    public void update(EquipmentReqDto equipmentReqDto){
+        this.name = equipmentReqDto.getName();
+        this.img_equipment = equipmentReqDto.getImg_equipment();
+        this.content = equipmentReqDto.getContent();;
+        this.count = equipmentReqDto.getCount();
     }
 
     public void updateCount(int Count){

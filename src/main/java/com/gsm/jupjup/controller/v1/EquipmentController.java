@@ -1,8 +1,8 @@
 package com.gsm.jupjup.controller.v1;
 
 
-import com.gsm.jupjup.dto.Equipment.EquipmentRequestDto;
-import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
+import com.gsm.jupjup.dto.Equipment.EquipmentReqDto;
+import com.gsm.jupjup.dto.Equipment.EquipmentResDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentUploadDto;
 import com.gsm.jupjup.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipment/{name}")
-    public EquipmentResponseDto findByName(@PathVariable String name){
+    public EquipmentResDto findByName(@PathVariable String name){
         return equipmentService.findByName(name);
     }
 
@@ -42,8 +42,8 @@ public class EquipmentController {
     }
 
     @PutMapping("/equipmnet/{name}")
-    public Long update(@PathVariable String name, @RequestBody EquipmentRequestDto equipmentRequestDto){
-        return equipmentService.update(name, equipmentRequestDto);
+    public Long update(@PathVariable String name, @RequestBody EquipmentReqDto equipmentReqDto){
+        return equipmentService.update(name, equipmentReqDto);
     }
 
     @DeleteMapping("/equipmnet/{name}")

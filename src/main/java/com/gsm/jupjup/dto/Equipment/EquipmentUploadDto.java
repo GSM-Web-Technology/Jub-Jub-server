@@ -8,14 +8,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @NoArgsConstructor
-public class EquipmentReqResDto {
+public class EquipmentUploadDto {
     private MultipartFile img_equipment;
     private String name;
     private String content;
     private int count;
 
     @Builder
-    public EquipmentReqResDto(MultipartFile img_equipment, String name, String content, int count){
+    public EquipmentUploadDto(MultipartFile img_equipment, String name, String content, int count){
         this.img_equipment = img_equipment;
         this.name = name;
         this.content = content;
