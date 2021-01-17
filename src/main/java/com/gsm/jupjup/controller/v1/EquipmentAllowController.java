@@ -1,7 +1,7 @@
 package com.gsm.jupjup.controller.v1;
 
-import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowRequestDto;
-import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResponseDto;
+import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowReqDto;
+import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResDto;
 import com.gsm.jupjup.service.EquipmentAllowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +14,17 @@ public class EquipmentAllowController {
     private EquipmentAllowService equipmentAllowService;
 
     @PostMapping("/equipmentAllow")
-    public Long save(@RequestBody EquipmentAllowRequestDto equipmentAllowRequestDto){
-        return equipmentAllowService.save(equipmentAllowRequestDto);
+    public Long save(@RequestBody EquipmentAllowReqDto equipmentAllowReqDto){
+        return equipmentAllowService.save(equipmentAllowReqDto);
     }
 
     @PostMapping("/equipmentAllow/{name}")
-    public void saveEquipmentAllowData(@PathVariable() String name, @RequestBody EquipmentAllowRequestDto equipmentAllowRequestDto){
-        equipmentAllowService.saveEquipmentAllowData(name, equipmentAllowRequestDto);
+    public void saveEquipmentAllowData(@PathVariable() String name, @RequestBody EquipmentAllowReqDto equipmentAllowReqDto){
+        equipmentAllowService.saveEquipmentAllowData(name, equipmentAllowReqDto);
     }
 
     @GetMapping("/equipmentAllow/{eqa_idx}")
-    public EquipmentAllowResponseDto equipmentAllowResponseDto(@PathVariable Long eqa_idx){
+    public EquipmentAllowResDto equipmentAllowResponseDto(@PathVariable Long eqa_idx){
         return equipmentAllowService.findById(eqa_idx);
     }
 

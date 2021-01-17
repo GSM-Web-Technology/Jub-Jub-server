@@ -4,8 +4,8 @@ import com.gsm.jupjup.dao.EquipmentAllowRepository;
 import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentAllowDomain;
 import com.gsm.jupjup.domain.EquipmentDomain;
-import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowRequestDto;
-import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResponseDto;
+import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowReqDto;
+import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResDto;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowSaveDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,18 +19,17 @@ public class EquipmentAllowService {
     EquipmentRepository equipmentRepo;
     @Autowired
     EquipmentService equipmentService;
-
     @Transactional
-    public Long save(EquipmentAllowRequestDto equipmentAllowRequestDto){
-        return equipmentAllowRepo.save(equipmentAllowRequestDto.toEntity()).getEqa_Idx();
+    public Long save(EquipmentAllowReqDto equipmentAllowReqDto){
+        return equipmentAllowRepo.save(equipmentAllowReqDto.toEntity()).getEqa_Idx();
     }
 
     @Transactional
-    public void saveEquipmentAllowData(String equipmentName , EquipmentAllowRequestDto equipmentAllowRequestDto){
+    public void saveEquipmentAllowData(String equipmentName , EquipmentAllowReqDto equipmentAllowReqDto){
         EquipmentDomain equipmentDomain = equipmentRepo.findByName(equipmentName).orElseThrow(() -> new IllegalArgumentException("해당 기자제는 없습니다."));
         EquipmentAllowSaveDto equipmentAllowSaveDto =
                 EquipmentAllowSaveDto.builder().
-                                    equipmentAllowRequestDto(equipmentAllowRequestDto).
+                                    equipmentAllowReqDto(equipmentAllowReqDto).
                                     equipmentDomain(equipmentDomain).
                                     build();
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowSaveDto.toEntity();
@@ -40,7 +39,7 @@ public class EquipmentAllowService {
     }
 
     @Transactional
-    public Long update(Long eqa_idx, EquipmentAllowRequestDto equipmentRequestDto){
+    public Long update(Long eqa_idx, EquipmentAllowReqDto equipmentRequestDto){
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalArgumentException("해당 신청은 없습니다. eqa_idx"+eqa_idx));
         equipmentAllowDomain.update(equipmentRequestDto.getAmount(), equipmentRequestDto.getReason());
         return equipmentAllowDomain.getEqa_Idx();
@@ -53,9 +52,9 @@ public class EquipmentAllowService {
     }
 
     @Transactional(readOnly = true)
-    public EquipmentAllowResponseDto findById(Long eqa_idx){
+    public EquipmentAllowResDto findById(Long eqa_idx){
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalStateException("해당 신청은 없습니다. eqa_idx="+eqa_idx));
-        return new EquipmentAllowResponseDto(equipmentAllowDomain);
+        return new EquipmentAllowResDto(equipmentAllowDomain);
     }
 
 
