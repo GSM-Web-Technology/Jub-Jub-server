@@ -4,9 +4,13 @@ import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
 import com.gsm.jupjup.dto.Equipment.EquipmentRequestDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
+import com.gsm.jupjup.dto.Equipment.EquipmentUploadDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 @Service
@@ -15,8 +19,20 @@ public class EquipmentService {
     EquipmentRepository equipmentRepo;
 
     @Transactional
-    public Long save(EquipmentRequestDto equipmentRequestDto){
-        return equipmentRepo.save(equipmentRequestDto.toEntity()).getEq_Idx();
+    public void save(EquipmentUploadDto equipmentUploadDto) throws IOException {
+        MultipartFile img_equipment = equipmentUploadDto.getImg_equipment();
+        byte[] conversionImg_equipment = img_equipment.getBytes();
+
+        EquipmentRequestDto equipmentRequestDto =
+                EquipmentRequestDto.builder()
+                        .img_equipment(conversionImg_equipment)
+                        .content(equipmentUploadDto.getContent())
+                        .name(equipmentUploadDto.getName())
+                        .count(equipmentUploadDto.getCount())
+                        .build();
+
+        EquipmentDomain equipmentDomain = equipmentRequestDto.toEntity();
+        equipmentRepo.save(equipmentDomain);
     }
 
     @Transactional
