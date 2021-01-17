@@ -18,19 +18,16 @@ public class JupjupApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(JupjupApplication.class, args);
-
-
 	}
 
 	@Autowired
 	EquipmentRepository equipmentRepo;
-
 	@Autowired
 	EquipmentAllowRepository equipmentAllowRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
-		final List<EquipmentDomain> equipmentTestQuery = Arrays.asList(new EquipmentDomain[]{
+		final List<EquipmentDomain> equipmentTestQuery = Arrays.asList(
 				EquipmentDomain.builder()
 						.name("삼성노트북")
 						.img_equipment(null)
@@ -42,8 +39,7 @@ public class JupjupApplication implements CommandLineRunner{
 						.img_equipment(null)
 						.content("LG노트")
 						.count(5)
-						.build()
-		});
+						.build());
 
 		List<EquipmentDomain> saveEquipmentTest = equipmentRepo.saveAll(equipmentTestQuery);
 	}
