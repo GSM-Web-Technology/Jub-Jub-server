@@ -3,8 +3,8 @@ package com.gsm.jupjup.service;
 import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
 import com.gsm.jupjup.dto.Equipment.EquipmentRequestDto;
-import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentUploadDto;
+import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,9 +56,26 @@ public class EquipmentService {
         equipmentRepo.delete(equipmentDomain);
     }
 
+    @Transactional
+    public byte[] findByNameGetEquipment_img(String name){
+        return equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name)).getImg_equipment();
+    }
+
     @Transactional(readOnly = true)
     public EquipmentResponseDto findByName(String name){
         EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
         return new EquipmentResponseDto(equipmentDomain);
     }
+
+//    @Transactional(readOnly = true)
+//    public BufferedImage findByName(String name) throws IOException {
+//        EquipmentDomain equipmentDomain = equipmentRepo.findByName(name).orElseThrow(() -> new IllegalArgumentException("해당 기자재는 없습니다. name="+name));
+//        BufferedImage equipment_img = null;
+//        ByteArrayInputStream bis = new ByteArrayInputStream(equipmentDomain.getImg_equipment());
+//        equipment_img = ImageIO.read(bis);
+//        bis.close();
+//
+//        return equipment_img;
+//    }
+
 }
