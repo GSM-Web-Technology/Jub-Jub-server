@@ -5,13 +5,13 @@ import com.gsm.jupjup.domain.EquipmentEnum;
 import lombok.Getter;
 
 @Getter
-public class EquipmentAllowResponseDto {
+public class EquipmentAllowResDto {
     private Long eqa_Idx;
     private int amount;
     private String reason;
     private EquipmentEnum equipmentEnum;
 
-    public EquipmentAllowResponseDto (EquipmentAllowDomain equipmentAllowDomain){
+    public EquipmentAllowResDto(EquipmentAllowDomain equipmentAllowDomain){
         this.eqa_Idx = equipmentAllowDomain.getEqa_Idx();
         this.amount = equipmentAllowDomain.getAmount();
         this.reason = equipmentAllowDomain.getReason();

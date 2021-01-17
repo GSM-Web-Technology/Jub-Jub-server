@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class EquipmentAllowRequestDto {
+public class EquipmentAllowReqDto {
 
     private int amount;
     private String reason;
 
     @Builder
-    public EquipmentAllowRequestDto(int amount, String reason){
+    public EquipmentAllowReqDto(int amount, String reason){
         this.amount = amount;
         this.reason = reason;
     }
