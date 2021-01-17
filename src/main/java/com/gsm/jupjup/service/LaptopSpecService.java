@@ -25,12 +25,12 @@ public class LaptopSpecService {
         return laptopSpecRepo.save(laptopSpecSaveRequestDto.toEntity()).getSpec_Idx();
     }
 
-    //Update.
-    @Transactional
-    public String update(String laptopSpec_Idx, LaptopSpecSaveRequestDto laptopSpecSaveRequestDto){
-        LaptopSpecDomain laptopSpecDomain = (LaptopSpecDomain) laptopSpecRepo.findBySpec_Idx(laptopSpec_Idx).orElseThrow(() -> new IllegalIdentifierException("해당 사양의 노트북이 없습니다.:"+laptopSpec_Idx));
-        laptopSpecDomain.update(laptopSpecSaveRequestDto.getCPU(), laptopSpecSaveRequestDto.getGPU(), laptopSpecSaveRequestDto.getRAM(), laptopSpecSaveRequestDto.getSSD(), laptopSpecSaveRequestDto.getHDD());
-        return laptopSpec_Idx;
-    }
+//    //Update.
+//    @Transactional
+//    public String update(String laptopSpec_Idx, LaptopSpecSaveRequestDto laptopSpecSaveRequestDto){
+//        LaptopSpecDomain laptopSpecDomain = (LaptopSpecDomain) laptopSpecRepo.findBySpec_Idx(laptopSpec_Idx).orElseThrow(() -> new IllegalIdentifierException("해당 사양의 노트북이 없습니다.:"+laptopSpec_Idx));
+//        laptopSpecDomain.update(laptopSpecSaveRequestDto.getCPU(), laptopSpecSaveRequestDto.getGPU(), laptopSpecSaveRequestDto.getRAM(), laptopSpecSaveRequestDto.getSSD(), laptopSpecSaveRequestDto.getHDD());
+//        return laptopSpec_Idx;
+//    }
 
 }
