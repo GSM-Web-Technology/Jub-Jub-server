@@ -17,7 +17,6 @@ public class EquipmentAllowService {
     EquipmentAllowRepository equipmentAllowRepo;
     @Autowired
     EquipmentRepository equipmentRepo;
-
     @Autowired
     EquipmentService equipmentService;
 
