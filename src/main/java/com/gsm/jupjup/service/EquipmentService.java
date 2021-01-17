@@ -70,7 +70,7 @@ public class EquipmentService {
     //Equipment를 name으로 찾고 Entity만드는 매서드
     @Transactional
     public EquipmentDomain equipmentFindByName(EquipmentRepository equipmentRepo, String name){
-        return equipmentFindByName(equipmentRepo, name);
+        return equipmentRepo.findByName(name).orElseThrow(()-> new IllegalArgumentException("해당 기자제는 없습니다. name="+name));
     }
 //    @Transactional(readOnly = true)
 //    public BufferedImage findByName(String name) throws IOException {
