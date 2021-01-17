@@ -10,9 +10,9 @@ public class EquipmentAllowSaveDto {
     private EquipmentDomain equipmentDomain;
 
     @Builder
-    public EquipmentAllowSaveDto(EquipmentAllowRequestDto equipmentAllowRequestDto, EquipmentDomain equipmentDomain){
-        this.amount = equipmentAllowRequestDto.getAmount();
-        this.reason = equipmentAllowRequestDto.getReason();
+    public EquipmentAllowSaveDto(EquipmentAllowReqDto equipmentAllowReqDto, EquipmentDomain equipmentDomain){
+        this.amount = equipmentAllowReqDto.getAmount();
+        this.reason = equipmentAllowReqDto.getReason();
         this.equipmentDomain = equipmentDomain;
     }
 
