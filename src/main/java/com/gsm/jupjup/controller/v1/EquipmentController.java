@@ -6,6 +6,7 @@ import com.gsm.jupjup.dto.Equipment.EquipmentResponseDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentUploadDto;
 import com.gsm.jupjup.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,13 +28,17 @@ public class EquipmentController {
                 .content(content)
                 .count(count)
                 .build();
-
         equipmentService.save(equipmentUploadDto);
     }
 
     @GetMapping("/equipment/{name}")
     public EquipmentResponseDto findByName(@PathVariable String name){
         return equipmentService.findByName(name);
+    }
+
+    @GetMapping(value="/equipment/img/{name}", produces=MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public byte[] findByNameGetEquipment_img(@PathVariable String name){
+        return equipmentService.findByNameGetEquipment_img(name);
     }
 
     @PutMapping("/equipmnet/{name}")
