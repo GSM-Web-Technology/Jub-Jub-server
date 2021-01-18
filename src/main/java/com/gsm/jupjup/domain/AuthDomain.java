@@ -2,26 +2,24 @@ package com.gsm.jupjup.domain;
 
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class AuthDomain {
+public class AuthDomain extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long auth_Idx;
 
-    @Column(nullable = false)
+    @Column
     private String email;
 
-    @Column(length = 4, nullable = false)
+    @Column
     private String classNumber;
 
     @Column
@@ -30,26 +28,29 @@ public class AuthDomain {
     @Column
     private String name;
 
-    @CreatedDate
-    private LocalDateTime create_at_Auth;
+    @Column
+    private String token;
 
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private AuthEnum authority;
+    private AuthEnum authEnum = AuthEnum.ROLE_NOT_PERMITTED;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "laptopSerialNumber")
     private LaptopDomain laptopDomain;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "eqa_Idx")
     private EquipmentAllowDomain equipmentAllowDomain;
 
+
     @Builder
-    public AuthDomain(String email, String classNumber, String password, String name, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
+    public AuthDomain(String email, String classNumber, String password, String name, String token, LaptopDomain laptopDomain, EquipmentAllowDomain equipmentAllowDomain){
         this.email = email;
         this.classNumber = classNumber;
         this.password = password;
         this.name = name;
+        this.token = token;
         this.laptopDomain = laptopDomain;
         this.equipmentAllowDomain = equipmentAllowDomain;
     }
