@@ -13,7 +13,9 @@ import java.time.LocalDateTime;
 @Entity
 public class LaptopDomain extends BaseTimeEntity{
 
+
     @Id
+    @Column
     private String laptopSerialNumber;
 
     @Column
@@ -25,6 +27,7 @@ public class LaptopDomain extends BaseTimeEntity{
     @CreatedDate
     private LocalDateTime create_at_Laptop;
 
+    // fk mapping
     @ManyToOne
     @JoinColumn(name = "spec_Idx")
     private LaptopSpecDomain laptopSpecDomain;

@@ -2,6 +2,7 @@ package com.gsm.jupjup.dto.test;
 
 
 import com.gsm.jupjup.domain.LaptopDomain;
+import com.gsm.jupjup.domain.LaptopSpecDomain;
 import com.gsm.jupjup.domain.TestDomain;
 import lombok.Builder;
 import lombok.Getter;
