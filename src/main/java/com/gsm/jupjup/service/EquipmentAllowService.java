@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class EquipmentAllowService {
     @Autowired
@@ -19,14 +21,14 @@ public class EquipmentAllowService {
     EquipmentRepository equipmentRepo;
     @Autowired
     EquipmentService equipmentService;
-    @Transactional
-    public Long save(EquipmentAllowReqDto equipmentAllowReqDto){
-        return equipmentAllowRepo.save(equipmentAllowReqDto.toEntity()).getEqa_Idx();
-    }
+//    @Transactional
+//    public Long save(EquipmentAllowReqDto equipmentAllowReqDto){
+//        return equipmentAllowRepo.save(equipmentAllowReqDto.toEntity()).getEqa_Idx();
+//    }
 
     @Transactional
-    public void saveEquipmentAllowData(String equipmentName , EquipmentAllowReqDto equipmentAllowReqDto){
-        EquipmentDomain equipmentDomain = equipmentRepo.findByName(equipmentName).orElseThrow(() -> new IllegalArgumentException("해당 기자제는 없습니다."));
+    public void saveEquipmentAllowData(String NameOfEquipment , EquipmentAllowReqDto equipmentAllowReqDto){
+        EquipmentDomain equipmentDomain = equipmentService.equipmentFindByName(equipmentRepo, NameOfEquipment);
         EquipmentAllowSaveDto equipmentAllowSaveDto =
                 EquipmentAllowSaveDto.builder().
                                     equipmentAllowReqDto(equipmentAllowReqDto).
@@ -35,27 +37,41 @@ public class EquipmentAllowService {
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowSaveDto.toEntity();
         int equipmentAmount = equipmentDomain.getCount() - equipmentAllowDomain.getAmount();
         equipmentAllowRepo.save(equipmentAllowDomain);
-        equipmentService.updateAmount(equipmentName, equipmentAmount);
+        equipmentService.updateAmount(NameOfEquipment, equipmentAmount);
     }
 
     @Transactional
     public Long update(Long eqa_idx, EquipmentAllowReqDto equipmentRequestDto){
-        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalArgumentException("해당 신청은 없습니다. eqa_idx"+eqa_idx));
+        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         equipmentAllowDomain.update(equipmentRequestDto.getAmount(), equipmentRequestDto.getReason());
         return equipmentAllowDomain.getEqa_Idx();
     }
 
     @Transactional
     public void deleteById(Long eqa_idx){
-        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalArgumentException("해당 신청은 없습니다. eqa_idx"+eqa_idx));
+        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         equipmentAllowRepo.delete(equipmentAllowDomain);
     }
 
     @Transactional(readOnly = true)
     public EquipmentAllowResDto findById(Long eqa_idx){
-        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalStateException("해당 신청은 없습니다. eqa_idx="+eqa_idx));
+        EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         return new EquipmentAllowResDto(equipmentAllowDomain);
     }
+
+    @Transactional(readOnly = true)
+    public List<EquipmentAllowDomain> findALl(){
+        List<EquipmentAllowDomain> equipmentALlowDomains = equipmentAllowRepo.findAll();
+        return equipmentALlowDomains;
+    }
+
+
+    //EquipmentALlow를 name으로 찾고 Entity만드는 매서드
+    @Transactional
+    public EquipmentAllowDomain equipmentAllowFindByEqa_idx(EquipmentAllowRepository equipmentAllowRepo, Long eqa_idx){
+        return equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalStateException("해당 신청은 없습니다. eqa_idx="+eqa_idx));
+    }
+
 
 
 }

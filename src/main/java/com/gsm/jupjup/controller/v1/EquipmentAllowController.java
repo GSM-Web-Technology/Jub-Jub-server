@@ -1,10 +1,13 @@
 package com.gsm.jupjup.controller.v1;
 
+import com.gsm.jupjup.domain.EquipmentAllowDomain;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowReqDto;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResDto;
 import com.gsm.jupjup.service.EquipmentAllowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -13,9 +16,14 @@ public class EquipmentAllowController {
     @Autowired
     private EquipmentAllowService equipmentAllowService;
 
-    @PostMapping("/equipmentAllow")
-    public Long save(@RequestBody EquipmentAllowReqDto equipmentAllowReqDto){
-        return equipmentAllowService.save(equipmentAllowReqDto);
+//    @PostMapping("/equipmentAllow")
+//    public Long save(@RequestBody EquipmentAllowReqDto equipmentAllowReqDto){
+//        return equipmentAllowService.save(equipmentAllowReqDto);
+//    }
+
+    @GetMapping("/equipmentAllow")
+    public List<EquipmentAllowDomain> equipmentAllowResponseDto(){
+        return equipmentAllowService.findALl();
     }
 
     @PostMapping("/equipmentAllow/{name}")
