@@ -14,7 +14,7 @@ import java.util.List;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class JupjupApplication implements CommandLineRunner{
+public class JupjupApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JupjupApplication.class, args);
