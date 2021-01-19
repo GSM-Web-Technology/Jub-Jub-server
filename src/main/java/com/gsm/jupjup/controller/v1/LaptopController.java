@@ -35,11 +35,4 @@ public class LaptopController {
     public String update(@PathVariable String laptopSerialNumber, @RequestBody LaptopSaveRequestDto laptopSaveRequestDto){
         return laptopService.update(laptopSerialNumber, laptopSaveRequestDto);
     }
-
-
-    @ResponseBody
-    @GetMapping("/savespec")
-    public String savespec(){
-        return laptopService.ALlSave();
-    }
 }
