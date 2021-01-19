@@ -1,15 +1,9 @@
 package com.gsm.jupjup.dto.test;
 
-
-import com.gsm.jupjup.domain.LaptopDomain;
-import com.gsm.jupjup.domain.LaptopSpecDomain;
-import com.gsm.jupjup.domain.TestDomain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.tomcat.jni.Local;
-
 import java.time.LocalDateTime;
 
 @Getter
@@ -28,15 +22,6 @@ public class LaptopSaveRequestDto {
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;
         this.spec_Idx = spec_Idx;
-    }
-
-
-    public LaptopDomain toEntity(){
-        return LaptopDomain.builder()
-                .laptopSerialNumber(laptopSerialNumber)
-                .laptopName(laptopName)
-                .laptopbrand(laptopbrand)
-                .build();
     }
 }
 // 1. client에서 보낼 data를 생각하고.

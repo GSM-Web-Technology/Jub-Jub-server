@@ -39,6 +39,13 @@ public class JupjupApplication implements CommandLineRunner {
 						.RAM("15gb")
 						.SSD("356gb")
 						.HDD("1tb")
+						.build(),
+				LaptopSpecDomain.builder()
+						.CPU("intel-i9")
+						.GPU("sexy")
+						.RAM("256gb")
+						.SSD("1pb")
+						.HDD("1tb")
 						.build());
 
 		List<LaptopSpecDomain> savedLaptopSpecDomainList = laptopSpecRepository.saveAll(laptopSpecDomainList);
