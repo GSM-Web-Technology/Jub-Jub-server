@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -25,7 +26,7 @@ public class LaptopDomain extends BaseTimeEntity{
     private String laptopbrand;
 
     @CreatedDate
-    private LocalDateTime create_at_Laptop;
+    private LocalDate create_at_Laptop;
 
     // fk mapping
     @ManyToOne
@@ -33,7 +34,7 @@ public class LaptopDomain extends BaseTimeEntity{
     private LaptopSpecDomain laptopSpecDomain;
 
     @Builder
-    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber, LaptopSpecDomain laptopSpecDomain){
+    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber, LaptopSpecDomain laptopSpecDomain, Long spec_Idx){
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;
         this.laptopSerialNumber = laptopSerialNumber;
