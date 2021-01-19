@@ -21,6 +21,14 @@ public class LaptopService {
 
     @Transactional
     public String save(LaptopSaveRequestDto laptopSaveRequestDto){
+        LaptopSpecDomain laptopSpecDomain = laptopSpecRepository.findBySpec_Idx(laptopSaveRequestDto.getSpec_Idx());
+        //Laptop 넣기
+        LaptopDomain laptopDomain = LaptopDomain.builder()
+                .laptopName(laptopSaveRequestDto.getLaptopName())
+                .laptopbrand(laptopSaveRequestDto.getLaptopbrand())
+                .laptopSerialNumber(laptopSaveRequestDto.getLaptopSerialNumber())
+                .laptopSpecDomain(laptopSpecDomain)
+                .build();
         return laptopRepo.save(laptopSaveRequestDto.toEntity()).getLaptopSerialNumber();
     }
 

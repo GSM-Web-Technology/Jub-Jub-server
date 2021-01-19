@@ -34,7 +34,7 @@ public class LaptopDomain extends BaseTimeEntity{
     private LaptopSpecDomain laptopSpecDomain;
 
     @Builder
-    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber, LaptopSpecDomain laptopSpecDomain, Long spec_Idx){
+    public LaptopDomain(String laptopName, String laptopbrand, String laptopSerialNumber, LaptopSpecDomain laptopSpecDomain){
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;
         this.laptopSerialNumber = laptopSerialNumber;

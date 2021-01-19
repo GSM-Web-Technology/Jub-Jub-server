@@ -20,10 +20,10 @@ public class LaptopSaveRequestDto {
     private String laptopName;
     private String laptopbrand;
     private LocalDateTime create_at_Laptop;
-    private String spec_Idx;
+    private Long spec_Idx;
 
     @Builder
-    public LaptopSaveRequestDto(String laptopSerialNumber, String laptopName, String laptopbrand, String spec_Idx){
+    public LaptopSaveRequestDto(String laptopSerialNumber, String laptopName, String laptopbrand, Long spec_Idx){
         this.laptopSerialNumber = laptopSerialNumber;
         this.laptopName = laptopName;
         this.laptopbrand = laptopbrand;
@@ -36,7 +36,6 @@ public class LaptopSaveRequestDto {
                 .laptopSerialNumber(laptopSerialNumber)
                 .laptopName(laptopName)
                 .laptopbrand(laptopbrand)
-                //.laptopSpecDomain(spec_Idx)
                 .build();
     }
 }
