@@ -29,7 +29,7 @@ public class LaptopService {
                 .laptopSerialNumber(laptopSaveRequestDto.getLaptopSerialNumber())
                 .laptopSpecDomain(laptopSpecDomain)
                 .build();
-        return laptopRepo.save(laptopSaveRequestDto.toEntity()).getLaptopSerialNumber();
+        return laptopRepo.save(laptopDomain).getLaptopSerialNumber();
     }
 
     @Transactional
