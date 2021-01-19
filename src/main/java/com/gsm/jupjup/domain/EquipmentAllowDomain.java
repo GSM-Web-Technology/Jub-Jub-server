@@ -43,5 +43,6 @@ public class EquipmentAllowDomain extends BaseTimeEntity{
         this.amount = amount;
         this.reason = reason;
     }
+
 }
 
