@@ -1,4 +1,4 @@
-package com.gsm.jupjup.service;
+package com.gsm.jupjup.service.v1.quipment;
 
 import com.gsm.jupjup.dao.EquipmentAllowRepository;
 import com.gsm.jupjup.dao.EquipmentRepository;
@@ -10,8 +10,6 @@ import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowSaveDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class EquipmentAllowService {
@@ -39,20 +37,20 @@ public class EquipmentAllowService {
     }
 
     @Transactional
-    public Long update(Long eqa_idx, EquipmentAllowReqDto equipmentRequestDto) throws Exception {
+    public Long update(Long eqa_idx, EquipmentAllowReqDto equipmentRequestDto){
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         equipmentAllowDomain.update(equipmentRequestDto.getAmount(), equipmentRequestDto.getReason());
         return equipmentAllowDomain.getEqa_Idx();
     }
 
     @Transactional
-    public void deleteById(Long eqa_idx) throws Exception {
+    public void deleteById(Long eqa_idx) throws Exception{
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         equipmentAllowRepo.delete(equipmentAllowDomain);
     }
 
     @Transactional(readOnly = true)
-    public EquipmentAllowResDto findById(Long eqa_idx) throws Exception {
+    public EquipmentAllowResDto findById(Long eqa_idx){
         EquipmentAllowDomain equipmentAllowDomain = equipmentAllowFindByEqa_idx(equipmentAllowRepo, eqa_idx);
         return new EquipmentAllowResDto(equipmentAllowDomain);
     }
@@ -65,8 +63,7 @@ public class EquipmentAllowService {
 
     //EquipmentALlow를 name으로 찾고 Entity만드는 매서드
     @Transactional
-    public EquipmentAllowDomain equipmentAllowFindByEqa_idx(EquipmentAllowRepository equipmentAllowRepo, Long eqa_idx) throws Exception {
-        if(eqa_idx == null) throw new Exception("잘못된 기자제 인텍스 접근");
+    public EquipmentAllowDomain equipmentAllowFindByEqa_idx(EquipmentAllowRepository equipmentAllowRepo, Long eqa_idx){
         return equipmentAllowRepo.findById(eqa_idx).orElseThrow(() -> new IllegalStateException("해당 신청은 없습니다. eqa_idx="+eqa_idx));
     }
 

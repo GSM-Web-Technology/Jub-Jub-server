@@ -4,13 +4,11 @@ package com.gsm.jupjup.controller.v1;
 import com.gsm.jupjup.dto.Equipment.EquipmentReqDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentResDto;
 import com.gsm.jupjup.dto.Equipment.EquipmentUploadDto;
-import com.gsm.jupjup.service.EquipmentService;
+import com.gsm.jupjup.service.v1.quipment.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1")

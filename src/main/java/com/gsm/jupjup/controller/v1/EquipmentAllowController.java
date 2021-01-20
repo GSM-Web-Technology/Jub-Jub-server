@@ -1,13 +1,10 @@
 package com.gsm.jupjup.controller.v1;
 
-import com.gsm.jupjup.domain.EquipmentAllowDomain;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowReqDto;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResDto;
-import com.gsm.jupjup.service.EquipmentAllowService;
+import com.gsm.jupjup.service.v1.quipment.EquipmentAllowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")

@@ -1,4 +1,4 @@
-package com.gsm.jupjup.service;
+package com.gsm.jupjup.service.v1.quipment;
 
 import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
@@ -8,7 +8,6 @@ import com.gsm.jupjup.dto.Equipment.EquipmentResDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -72,7 +71,6 @@ public class EquipmentService {
     //Equipment를 name으로 찾고 Entity만드는 매서드
     @Transactional
     public EquipmentDomain equipmentFindByName(EquipmentRepository equipmentRepo, String name) throws Exception {
-        if(name == null || name == "") throw new Exception("기자제 이름이 잆습니다.");
         return equipmentRepo.findByName(name).orElseThrow(()-> new IllegalArgumentException("해당 기자제는 없습니다. name="+name));
     }
 //    @Transactional(readOnly = true)
