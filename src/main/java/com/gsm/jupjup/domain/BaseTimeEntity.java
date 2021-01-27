@@ -13,9 +13,8 @@ public abstract class BaseTimeEntity {
 
     @CreatedDate
     private LocalDateTime createdDate;
-
-    public LocalDateTime getCreatedDate() {
+    
+    public LocalDateTime getCreatedDate(){
         return createdDate;
     }
-
 }

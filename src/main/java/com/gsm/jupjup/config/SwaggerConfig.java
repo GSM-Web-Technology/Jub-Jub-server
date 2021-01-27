@@ -1,3 +1,4 @@
+
 package com.gsm.jupjup.config;
 
 import org.springframework.context.annotation.Bean;

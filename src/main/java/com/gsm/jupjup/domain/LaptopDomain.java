@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -11,9 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class LaptopDomain {
+public class LaptopDomain extends BaseTimeEntity{
+
 
     @Id
+    @Column
     private String laptopSerialNumber;
 
     @Column
@@ -23,8 +26,9 @@ public class LaptopDomain {
     private String laptopbrand;
 
     @CreatedDate
-    private LocalDateTime create_at_Laptop;
+    private LocalDate create_at_Laptop;
 
+    // fk mapping
     @ManyToOne
     @JoinColumn(name = "spec_Idx")
     private LaptopSpecDomain laptopSpecDomain;
@@ -35,5 +39,10 @@ public class LaptopDomain {
         this.laptopbrand = laptopbrand;
         this.laptopSerialNumber = laptopSerialNumber;
         this.laptopSpecDomain = laptopSpecDomain;
+    }
+    //update 문에 사용할 생성자 정의.
+    public void update(String laptopName, String laptopbrand){
+        this.laptopName = laptopName;
+        this.laptopbrand = laptopbrand;
     }
 }
