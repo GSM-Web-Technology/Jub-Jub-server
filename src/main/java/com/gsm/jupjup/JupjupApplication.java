@@ -3,7 +3,10 @@ package com.gsm.jupjup;
 
 import com.gsm.jupjup.dao.EquipmentAllowRepository;
 import com.gsm.jupjup.dao.EquipmentRepository;
+import com.gsm.jupjup.dao.LaptopSpecRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
+import com.gsm.jupjup.domain.LaptopSpecDomain;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +16,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import java.util.Arrays;
 import java.util.List;
 
-@EnableJpaAuditing
 @SpringBootApplication
 @EnableJpaAuditing
 @RequiredArgsConstructor
