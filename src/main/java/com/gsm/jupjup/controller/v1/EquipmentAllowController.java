@@ -1,13 +1,10 @@
 package com.gsm.jupjup.controller.v1;
 
-import com.gsm.jupjup.domain.EquipmentAllowDomain;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowReqDto;
 import com.gsm.jupjup.dto.EquipmentAllow.EquipmentAllowResDto;
-import com.gsm.jupjup.service.EquipmentAllowService;
+import com.gsm.jupjup.service.v1.quipment.EquipmentAllowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -21,18 +18,18 @@ public class EquipmentAllowController {
 //        return equipmentAllowService.save(equipmentAllowReqDto);
 //    }
 
-    @GetMapping("/equipmentAllow")
-    public List<EquipmentAllowDomain> equipmentAllowResponseDto(){
-        return equipmentAllowService.findALl();
-    }
+//    @GetMapping("/equipmentAllow")
+//    public List<String> findAllForAdmin(){
+//        return equipmentAllowService.findAllForAdmin();
+//    }
 
     @PostMapping("/equipmentAllow/{name}")
-    public void saveEquipmentAllowData(@PathVariable() String name, @RequestBody EquipmentAllowReqDto equipmentAllowReqDto){
+    public void saveEquipmentAllowData(@PathVariable() String name, @RequestBody EquipmentAllowReqDto equipmentAllowReqDto) throws Exception {
         equipmentAllowService.saveEquipmentAllowData(name, equipmentAllowReqDto);
     }
 
     @GetMapping("/equipmentAllow/{eqa_idx}")
-    public EquipmentAllowResDto equipmentAllowResponseDto(@PathVariable Long eqa_idx){
+    public EquipmentAllowResDto equipmentAllowResponseDto(@PathVariable Long eqa_idx) throws Exception {
         return equipmentAllowService.findById(eqa_idx);
     }
 
@@ -43,7 +40,7 @@ public class EquipmentAllowController {
 //    }
 
     @DeleteMapping("/equipmentAllow/{eqa_idx}")
-    public void delete(@PathVariable Long eqa_idx){
+    public void delete(@PathVariable Long eqa_idx) throws Exception {
         equipmentAllowService.deleteById(eqa_idx);
     }
 

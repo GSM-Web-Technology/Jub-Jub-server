@@ -1,4 +1,4 @@
-package com.gsm.jupjup.service;
+package com.gsm.jupjup.service.v1.quipment;
 
 import com.gsm.jupjup.dao.EquipmentRepository;
 import com.gsm.jupjup.domain.EquipmentDomain;
@@ -19,7 +19,8 @@ public class EquipmentService {
     EquipmentRepository equipmentRepo;
 
     @Transactional
-    public void save(EquipmentUploadDto equipmentUploadDto) throws IOException {
+    public void save(EquipmentUploadDto equipmentUploadDto) throws Exception {
+        if(equipmentUploadDto.getImg_equipment().isEmpty()) throw new IOException("사진이 없습니다.");
         MultipartFile img_equipment = equipmentUploadDto.getImg_equipment();
         byte[] img_equipmentToByte = img_equipment.getBytes();
 
@@ -36,14 +37,14 @@ public class EquipmentService {
     }
 
     @Transactional
-    public Long update(String name, EquipmentReqDto equipmentReqDto){
+    public Long update(String name, EquipmentReqDto equipmentReqDto) throws Exception {
         EquipmentDomain equipmentDomain = equipmentFindByName(equipmentRepo, name);
         equipmentDomain.update(equipmentReqDto);
         return equipmentDomain.getEq_Idx();
     };
 
     @Transactional
-    public String updateAmount(String name, int count){
+    public String updateAmount(String name, int count) throws Exception {
         EquipmentDomain equipmentDomain = equipmentFindByName(equipmentRepo, name);
         equipmentDomain.updateCount(count);
         equipmentRepo.save(equipmentDomain);
@@ -51,25 +52,25 @@ public class EquipmentService {
     }
 
     @Transactional
-    public void deleteByName(String name){
+    public void deleteByName(String name) throws Exception {
         EquipmentDomain equipmentDomain = equipmentFindByName(equipmentRepo, name);
         equipmentRepo.delete(equipmentDomain);
     }
 
     @Transactional
-    public byte[] findByNameGetEquipment_img(String name){
+    public byte[] findByNameGetEquipment_img(String name) throws Exception {
         return equipmentFindByName(equipmentRepo, name).getImg_equipment();
     }
 
     @Transactional(readOnly = true)
-    public EquipmentResDto findByName(String name){
+    public EquipmentResDto findByName(String name) throws Exception {
         EquipmentDomain equipmentDomain = equipmentFindByName(equipmentRepo, name);
         return new EquipmentResDto(equipmentDomain);
     }
 
     //Equipment를 name으로 찾고 Entity만드는 매서드
     @Transactional
-    public EquipmentDomain equipmentFindByName(EquipmentRepository equipmentRepo, String name){
+    public EquipmentDomain equipmentFindByName(EquipmentRepository equipmentRepo, String name) throws Exception {
         return equipmentRepo.findByName(name).orElseThrow(()-> new IllegalArgumentException("해당 기자제는 없습니다. name="+name));
     }
 //    @Transactional(readOnly = true)
