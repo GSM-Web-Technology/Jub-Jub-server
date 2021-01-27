@@ -57,3 +57,4 @@ PR을 날린 레포로 가서 PR부분에서 내가 날린 PR을 클릭 => "clos
 <br/>
 # Commit 취소하기
 [Commit 취소하기](https://fuirosun.tistory.com/entry/git-git-push-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0){: target="_blank"}
+  - 운영 버전에 생긴 치명적인 버그는 즉시 해결해야하기 때문에 문제가 생기면 마스터 `master` 브랜치에 만들어둔 태그 `tag` 로부터 긴급수정 `hotfix` 브랜치를 생성한다.
