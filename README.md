@@ -49,3 +49,12 @@
   - 미리 계획되지 않은 배포를 위한 브랜치이다. 기본적인 동작 방식을 출시 `release` 브랜치와 비슷하다.
   - 이미 배포한 운영버전에서 발생한 문제를 해결하기 위해 만든다.
   - 운영 버전에 생긴 치명적인 버그는 즉시 해결해야하기 때문에 문제가 생기면 마스터 `master` 브랜치에 만들어둔 태그 `tag` 로부터 긴급수정 `hotfix` 브랜치를 생성한다.
+
+
+# PR 취소하기
+PR을 날린 레포로 가서 PR부분에서 내가 날린 PR을 클릭 => "close pull requst" 클릭
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDG9F6%2FbtqBiCvEu2i%2Frhu7wzRMbVZqwjvzJxxdI0%2Fimg.png">
+<br/>
+# Commit 취소하기
+[Commit 취소하기](https://fuirosun.tistory.com/entry/git-git-push-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0){: target="_blank"}
+  - 운영 버전에 생긴 치명적인 버그는 즉시 해결해야하기 때문에 문제가 생기면 마스터 `master` 브랜치에 만들어둔 태그 `tag` 로부터 긴급수정 `hotfix` 브랜치를 생성한다.
