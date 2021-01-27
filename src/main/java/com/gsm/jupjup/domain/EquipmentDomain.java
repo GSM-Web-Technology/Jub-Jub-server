@@ -1,17 +1,15 @@
 package com.gsm.jupjup.domain;
 
+import com.gsm.jupjup.dto.Equipment.EquipmentReqDto;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-public class EquipmentDomain {
+public class EquipmentDomain extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eq_Idx;
@@ -29,9 +27,6 @@ public class EquipmentDomain {
     @Column
     private int count;
 
-    @CreatedDate
-    private LocalDateTime create_at_equipment;
-
     @Builder
     public EquipmentDomain(String name, byte[] img_equipment, String content, int count){
         this.name = name;
@@ -40,10 +35,14 @@ public class EquipmentDomain {
         this.count = count;
     }
 
-    public void update(String name, byte[] img_equipment, String content, int count){
-        this.name = name;
-        this.img_equipment = img_equipment;
-        this.content = content;
-        this.count = count;
+    public void update(EquipmentReqDto equipmentReqDto){
+        this.name = equipmentReqDto.getName();
+        this.img_equipment = equipmentReqDto.getImg_equipment();
+        this.content = equipmentReqDto.getContent();;
+        this.count = equipmentReqDto.getCount();
+    }
+
+    public void updateCount(int Count){
+        this.count = Count;
     }
 }

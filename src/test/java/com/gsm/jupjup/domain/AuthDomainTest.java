@@ -61,10 +61,8 @@ public class AuthDomainTest {
     @Test
     public void Auth_EquipmentAllow(){
         final EquipmentAllowDomain equipmentAllowDomain = EquipmentAllowDomain.builder()
-                .name("김상현")
                 .amount(9)
                 .reason("이유")
-                .equipmentEnum(EquipmentEnum.ROLE_Accept)
                 .build();
         final AuthDomain authDomain = AuthDomain.builder()
                 .email("s19066@gsm.hs.kr")
@@ -86,4 +84,5 @@ public class AuthDomainTest {
     public void Laptop_LaptopSpec(){
 
     }
+
 }

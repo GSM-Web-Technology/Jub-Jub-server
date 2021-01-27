@@ -28,10 +28,8 @@ public class ReservationDomainTest {
                 .build();
 
         final EquipmentAllowDomain equipmentAllowDomain = EquipmentAllowDomain.builder()
-                .name("Mac Pro")
                 .amount(1)
                 .reason("공부")
-                .equipmentEnum(EquipmentEnum.ROLE_Accept)
                 .build();
 
         AuthDomain.builder().equipmentAllowDomain(equipmentAllowDomain);
